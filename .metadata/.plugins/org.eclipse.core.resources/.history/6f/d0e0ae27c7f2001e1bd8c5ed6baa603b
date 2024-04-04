@@ -1,0 +1,39 @@
+package co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.api;
+
+import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.model.GetEnigmaStepResponse;
+import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.model.Header;
+import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.model.JsonApiBodyRequest;
+import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.servicio.RestTemplateService;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-03-12T17:47:40.265921400-05:00[America/Bogota]")
+@Controller
+public class GetStepApiController implements GetStepApi {
+	@Override
+    public ResponseEntity<?> getStep(@Valid @RequestBody JsonApiBodyRequest body) {
+        String step = body.getData().get(0).getStep();
+        if (!"1".equals(step)) {
+            ErrorResponse errorResponse = new ErrorResponse();
+            errorResponse.addError("400", "Invalid Step", "Error", "Invalid Step", "400", "Invalid Step");
+            return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+        }
+        
+        // Lógica para obtener la respuesta normal cuando el paso es igual a "1"
+        
+        // Por ejemplo:
+        GetEnigmaStepResponse response = new GetEnigmaStepResponse();
+        response.setHeader(body.getData().get(0).getHeader());
+        response.setStep(step);
+        response.setStepDescription("Servicio 1: Abrir el refrigerador");
+        
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+}

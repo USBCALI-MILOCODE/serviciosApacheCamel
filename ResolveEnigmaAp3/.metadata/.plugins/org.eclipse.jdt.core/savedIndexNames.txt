@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+C:\Users\jcrod\OneDrive\Desktop\Universidad\sextoSemestre\servicios\Corte2\ApacheCamell\ResolveEnigmaAp3\.metadata\.plugins\org.eclipse.jdt.core
+2037352467.index
+3160065821.index
+1865797976.index

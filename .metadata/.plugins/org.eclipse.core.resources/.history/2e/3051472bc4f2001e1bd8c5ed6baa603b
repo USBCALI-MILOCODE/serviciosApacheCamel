@@ -1,0 +1,5 @@
+package co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.routes;
+
+public class GetStepOneClientRoute extends RouteBuilder{
+
+}
