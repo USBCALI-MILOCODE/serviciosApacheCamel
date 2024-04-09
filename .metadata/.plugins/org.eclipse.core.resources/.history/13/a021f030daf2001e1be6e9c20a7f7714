@@ -1,0 +1,50 @@
+package co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.api;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.model.GetEnigmaStepResponse;
+import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.model.Header;
+import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.model.JsonApiBodyRequest;
+import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.servicio.RestTemplateService;
+
+@Controller
+public class GetStepApiController implements GetStepApi {
+    private final Logger logger = LoggerFactory.getLogger(GetStepApiController.class);
+
+    @Autowired
+    private RestTemplateService restTemplateService;
+    
+    @Override
+    public ResponseEntity<?> getStep(@RequestBody JsonApiBodyRequest body) {
+        try {
+            // Procesar el enigma
+            String answer = processEnigma(body.getData().get(0).getEnigma());
+
+            // Construir la respuesta final
+            GetEnigmaStepResponse stepResponse = new GetEnigmaStepResponse();
+            Header header = body.getData().get(0).getHeader();
+            stepResponse.setHeader(header);
+            stepResponse.setAnswer(answer); // Agregar la respuesta al objeto de respuesta
+            
+            // Empaquetar la respuesta en el formato deseado
+            return ResponseEntity.ok().body(new JsonApiBodyRequest().data(List.of(stepResponse)));
+        } catch (Exception e) {
+            logger.error("Error al procesar el enigma: {}", e.getMessage());
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    private String processEnigma(String enigma) {
+        // Procesar el enigma aquí y generar la respuesta adecuada
+        // Por ahora, simplemente devolvemos una respuesta estática
+        return "Step1: Open the refrigerator - Step2: Put the giraffe in - Step3: Close the door";
+    }
+}

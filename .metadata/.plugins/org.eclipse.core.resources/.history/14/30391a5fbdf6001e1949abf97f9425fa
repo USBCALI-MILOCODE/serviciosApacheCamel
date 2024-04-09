@@ -1,0 +1,9 @@
+package co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.model.client;
+
+/**
+ * Header
+ */
+@Validated
+public class ClientHeader {
+
+}

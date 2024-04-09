@@ -1,0 +1,5 @@
+package co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.strategy;
+
+public class JoinReplyAggregationStrategy implements AggregationStrategy {
+
+}

@@ -1,16 +1,16 @@
 package co.com.rodriguezCaicedo.microservice.resolveEnigmaApi.model;
 
 import java.util.Objects;
-import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi.model.Header;
-import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi.model.GetEnigmaRequest;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
+
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+
 /**
  * GetEnigmaRequest
  */
@@ -35,7 +35,6 @@ public class GetEnigmaRequest {
 	 **/
 	@ApiModelProperty(required = true, value = "")
 	@NotNull
-
 	@Valid
 	public Header getHeader() {
 		return header;
@@ -57,7 +56,6 @@ public class GetEnigmaRequest {
 	 **/
 	@ApiModelProperty(required = true, value = "")
 	@NotNull
-
 	public String getStep() {
 		return step;
 	}
@@ -89,7 +87,7 @@ public class GetEnigmaRequest {
 		sb.append("class GetEnigmaRequest {\n");
 
 		sb.append("    header: ").append(toIndentedString(header)).append("\n");
-		sb.append("    step: ").append(toIndentedString(step)).append("\n");
+		sb.append("    step:   ").append(toIndentedString(step)).append("\n");
 		sb.append("}");
 		return sb.toString();
 	}

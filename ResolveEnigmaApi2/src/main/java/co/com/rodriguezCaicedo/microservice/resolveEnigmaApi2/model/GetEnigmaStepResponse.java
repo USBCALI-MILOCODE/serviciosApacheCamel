@@ -1,128 +1,135 @@
 package co.com.rodriguezCaicedo.microservice.resolveEnigmaApi2.model;
 
 import java.util.Objects;
-import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi2.model.Header;
-import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi2.model.GetEnigmaStepResponse;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
+
 import io.swagger.annotations.ApiModelProperty;
-import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 
 /**
  * GetEnigmaStepResponse
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-03-06T18:57:51.220216900-05:00[America/Bogota]")
-public class GetEnigmaStepResponse   {
-	 @JsonProperty("header")
-	  private Header header = null;
+public class GetEnigmaStepResponse {
+	@JsonProperty("header")
+	private Header header = null;
 
-	  @JsonProperty("answer")
-	  private String answer = null;
+	@JsonProperty("step")
+	private String step = null;
 
-	  public GetEnigmaStepResponse header(Header header) {
-	    this.header = header;
-	    return this;
-	  }
+	@JsonProperty("stepDescription")
+	private String stepDescription = null;
 
-	  /**
-	   * Get header
-	   * @return header
-	  **/
-	  @ApiModelProperty(required = true, value = "")
-	  @NotNull
+	public GetEnigmaStepResponse header(Header header) {
+		this.header = header;
+		return this;
+	}
 
-	  @Valid
-	  public Header getHeader() {
-	    return header;
-	  }
+	/**
+	 * Get header
+	 * 
+	 * @return header
+	 **/
+	@ApiModelProperty(required = true, value = "")
+	@NotNull
+	@Valid
+	public Header getHeader() {
+		return header;
+	}
 
-	  public void setHeader(Header header) {
-	    this.header = header;
-	  }
+	public void setHeader(Header header) {
+		this.header = header;
+	}
 
-	  public GetEnigmaStepResponse answer(String answer) {
-	    this.answer = answer;
-	    return this;
-	  }
+	public GetEnigmaStepResponse step(String step) {
+		this.step = step;
+		return this;
+	}
 
-	  /**
-	   * Get answer
-	   * @return answer
-	  **/
-	  @ApiModelProperty(required = true, value = "")
-	  @NotNull
+	/**
+	 * Get step
+	 * 
+	 * @return step
+	 **/
+	@ApiModelProperty(required = true, value = "")
+	@NotNull
+	public String getStep() {
+		return step;
+	}
 
-	  public String getAnswer() {
-	    return answer;
-	  }
+	public void setStep(String step) {
+		this.step = step;
+	}
 
-	  public void setAnswer(String answer) {
-	    this.answer = answer;
-	  }
+	public GetEnigmaStepResponse stepDescription(String stepDescription) {
+		this.stepDescription = stepDescription;
+		return this;
+	}
 
-	  // Método setId
-	  public void setId(String id) {
-	    if (this.header == null) {
-	      this.header = new Header();
-	    }
-	    this.header.setId(id);
-	  }
+	/**
+	 * Get stepDescription
+	 * 
+	 * @return stepDescription
+	 **/
+	@ApiModelProperty(required = true, value = "")
+	@NotNull
+	public String getStepDescription() {
+		return stepDescription;
+	}
 
-	  // Método setType
-	  public void setType(String type) {
-	    if (this.header == null) {
-	      this.header = new Header();
-	    }
-	    this.header.setType(type);
-	  }
+	public void setStepDescription(String stepDescription) {
+		this.stepDescription = stepDescription;
+	}
 
-	  // Método setSolution
-	  public void setSolution(String solution) {
-	    this.answer = solution;
-	  }
+	@Override
+	public boolean equals(java.lang.Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
-	  @Override
-	  public boolean equals(java.lang.Object o) {
-	    if (this == o) {
-	      return true;
-	    }
-	    if (o == null || getClass() != o.getClass()) {
-	      return false;
-	    }
-	    GetEnigmaStepResponse getEnigmaStepResponse = (GetEnigmaStepResponse) o;
-	    return Objects.equals(this.header, getEnigmaStepResponse.header) &&
-	        Objects.equals(this.answer, getEnigmaStepResponse.answer);
-	  }
+		GetEnigmaStepResponse getEnigmaStepResponse = (GetEnigmaStepResponse) o;
 
-	  @Override
-	  public int hashCode() {
-	    return Objects.hash(header, answer);
-	  }
+		return Objects.equals(this.header, getEnigmaStepResponse.header)
+				&& Objects.equals(this.step, getEnigmaStepResponse.step)
+				&& Objects.equals(this.stepDescription, getEnigmaStepResponse.stepDescription);
+	}
 
-	  @Override
-	  public String toString() {
-	    StringBuilder sb = new StringBuilder();
-	    sb.append("class GetEnigmaStepResponse {\n");
-	    
-	    sb.append("    header: ").append(toIndentedString(header)).append("\n");
-	    sb.append("    answer: ").append(toIndentedString(answer)).append("\n");
-	    sb.append("}");
-	    return sb.toString();
-	  }
+	@Override
+	public int hashCode() {
+		return Objects.hash(header, step, stepDescription);
+	}
 
-	  /**
-	   * Convert the given object to string with each line indented by 4 spaces
-	   * (except the first line).
-	   */
-	  private String toIndentedString(java.lang.Object o) {
-	    if (o == null) {
-	      return "null";
-	    }
-	    return o.toString().replace("\n", "\n    ");
-	  }
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("class GetEnigmaStepResponse {\n");
+		sb.append("    header:          ").append(toIndentedString(header)).append("\n");
+		sb.append("    step:            ").append(toIndentedString(step)).append("\n");
+		sb.append("    stepDescription: ").append(toIndentedString(stepDescription)).append("\n");
+		sb.append("}");
+
+		return sb.toString();
+	}
+
+	/**
+	 * Convert the given object to string with each line indented by 4 spaces
+	 * (except the first line).
+	 */
+	private String toIndentedString(java.lang.Object o) {
+		if (o == null) {
+			return "null";
+		}
+
+		return o.toString().replace("\n", "\n    ");
+	}
 }

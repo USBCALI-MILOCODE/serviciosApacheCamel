@@ -1,0 +1,7 @@
+package co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.strategy;
+
+import org.apache.camel.processor.aggregate.AggregationStrategy;
+
+public class JoinReplyAggregationStrategy implements AggregationStrategy {
+
+}

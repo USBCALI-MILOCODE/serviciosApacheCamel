@@ -18,90 +18,90 @@ import io.swagger.annotations.ApiModelProperty;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-03-06T18:57:51.220216900-05:00[America/Bogota]")
 public class GetEnigmaRequest {
 	@JsonProperty("header")
-	private Header header = null;
+	  private Header header = null;
 
-	@JsonProperty("step")
-	private String step = null;
+	  @JsonProperty("enigma")
+	  private String enigma = null;
 
-	public GetEnigmaRequest header(Header header) {
-		this.header = header;
-		return this;
-	}
+	  public GetEnigmaRequest header(Header header) {
+	    this.header = header;
+	    return this;
+	  }
 
-	/**
-	 * Get header
-	 * 
-	 * @return header
-	 **/
-	@ApiModelProperty(required = true, value = "")
-	@NotNull
+	  /**
+	   * Get header
+	   * @return header
+	  **/
+	  @ApiModelProperty(required = true, value = "")
+	  @NotNull
 
-	@Valid
-	public Header getHeader() {
-		return header;
-	}
+	  @Valid
+	  public Header getHeader() {
+	    return header;
+	  }
 
-	public void setHeader(Header header) {
-		this.header = header;
-	}
+	  public void setHeader(Header header) {
+	    this.header = header;
+	  }
 
-	public GetEnigmaRequest step(String step) {
-		this.step = step;
-		return this;
-	}
+	  public GetEnigmaRequest enigma(String enigma) {
+	    this.enigma = enigma;
+	    return this;
+	  }
 
-	/**
-	 * Get step
-	 * 
-	 * @return step
-	 **/
-	@ApiModelProperty(required = true, value = "")
-	@NotNull
+	  /**
+	   * Get enigma
+	   * @return enigma
+	  **/
+	  @ApiModelProperty(required = true, value = "")
+	  @NotNull
 
-	public String getStep() {
-		return step;
-	}
+	  public String getEnigma() {
+	    return enigma;
+	  }
 
-	public void setStep(String step) {
-		this.step = step;
-	}
+	  public void setEnigma(String enigma) {
+	    this.enigma = enigma;
+	  }
 
-	@Override
-	public boolean equals(java.lang.Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (o == null || getClass() != o.getClass()) {
-			return false;
-		}
-		GetEnigmaRequest getEnigmaRequest = (GetEnigmaRequest) o;
-		return Objects.equals(this.header, getEnigmaRequest.header) && Objects.equals(this.step, getEnigmaRequest.step);
-	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(header, step);
-	}
+	  @Override
+	  public boolean equals(java.lang.Object o) {
+	    if (this == o) {
+	      return true;
+	    }
+	    if (o == null || getClass() != o.getClass()) {
+	      return false;
+	    }
+	    GetEnigmaRequest getEnigmaRequest = (GetEnigmaRequest) o;
+	    return Objects.equals(this.header, getEnigmaRequest.header) &&
+	        Objects.equals(this.enigma, getEnigmaRequest.enigma);
+	  }
 
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("class GetEnigmaRequest {\n");
+	  @Override
+	  public int hashCode() {
+	    return Objects.hash(header, enigma);
+	  }
 
-		sb.append("    header: ").append(toIndentedString(header)).append("\n");
-		sb.append("    step: ").append(toIndentedString(step)).append("\n");
-		sb.append("}");
-		return sb.toString();
-	}
+	  @Override
+	  public String toString() {
+	    StringBuilder sb = new StringBuilder();
+	    sb.append("class GetEnigmaRequest {\n");
+	    
+	    sb.append("    header: ").append(toIndentedString(header)).append("\n");
+	    sb.append("    enigma: ").append(toIndentedString(enigma)).append("\n");
+	    sb.append("}");
+	    return sb.toString();
+	  }
 
-	/**
-	 * Convert the given object to string with each line indented by 4 spaces
-	 * (except the first line).
-	 */
-	private String toIndentedString(java.lang.Object o) {
-		if (o == null) {
-			return "null";
-		}
-		return o.toString().replace("\n", "\n    ");
-	}
+	  /**
+	   * Convert the given object to string with each line indented by 4 spaces
+	   * (except the first line).
+	   */
+	  private String toIndentedString(java.lang.Object o) {
+	    if (o == null) {
+	      return "null";
+	    }
+	    return o.toString().replace("\n", "\n    ");
+	  }
 }

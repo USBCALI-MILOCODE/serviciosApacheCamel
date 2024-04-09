@@ -3,7 +3,6 @@ package co.com.rodriguezCaicedo.microservice.resolveEnigmaApi.api;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
@@ -12,74 +11,66 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi.model.GetEnigmaRequest;
+import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi.model.ErrorDetail;
 import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi.model.GetEnigmaStepResponse;
-import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi.model.Header;
 import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi.model.JsonApiBodyRequest;
+import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi.model.JsonApiBodyResponseErrors;
 import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi.model.JsonApiBodyResponseSuccess;
 import io.swagger.annotations.ApiParam;
+
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-03-06T19:46:31.895722200-05:00[America/Bogota]")
 @Controller
 public class GetStepApiController implements GetStepApi {
+	@org.springframework.beans.factory.annotation.Autowired
+	public GetStepApiController() {
+	}
 
+	public ResponseEntity<?> getStep(
+			@ApiParam(value = "request body get enigma step", required = true) @Valid @RequestBody JsonApiBodyRequest body) {
+		boolean isStepOne = (body.getData().get(0).getStep().equalsIgnoreCase("1"));
 
-	private final ObjectMapper objectMapper;
-    private final HttpServletRequest request;
+		if (!isStepOne) {
+			return new ResponseEntity<>(createResponseErrors(body), HttpStatus.BAD_REQUEST);
+		}
 
-    public GetStepApiController(ObjectMapper objectMapper, HttpServletRequest request) {
-        this.objectMapper = objectMapper;
-        this.request = request;
-    }
+		return new ResponseEntity<>(createResponseSuccess(body), HttpStatus.OK);
+	}
 
-    public ResponseEntity<List<JsonApiBodyResponseSuccess>> getStep(@ApiParam(value = "request body get enigma step", required = true) @Valid @RequestBody JsonApiBodyRequest body) {
-        List<GetEnigmaRequest> enigmas = body.getData();
-        List<JsonApiBodyResponseSuccess> responseList = new ArrayList<>();
+	@GetMapping("/getStepOne")
+	public ResponseEntity<String> getStepOne() {
+		return new ResponseEntity<>("Servicio 1: Abrir el refrigerador", HttpStatus.OK);
+	}
 
-        for (GetEnigmaRequest enigma : enigmas) {
-            // Obtener los datos del enigma
-            Header header = enigma.getHeader();
-            String id = header.getId();
-            String type = header.getType();
-            String enigmaQuestion = enigma.getStep();
+	private List<JsonApiBodyResponseErrors> createResponseErrors(JsonApiBodyRequest body) {
+		ErrorDetail errorDetail = new ErrorDetail();
+		errorDetail.setCode("001");
+		errorDetail.setDetail("Step: ".concat(body.getData().get(0).getStep()).concat(" not supported - Expected: 1"));
+		errorDetail.setId(body.getData().get(0).getHeader().getId());
+		errorDetail.setSource("/getStep");
+		errorDetail.setStatus("400");
+		errorDetail.setTitle("Step not supported");
 
-            // Obtener el paso del enigma
-            String step = enigma.getStep();
+		JsonApiBodyResponseErrors responseError = new JsonApiBodyResponseErrors();
+		responseError.addErrorsItem(errorDetail);
 
-            // Resolver el enigma
-            String solution = solveEnigma(enigmaQuestion);
+		List<JsonApiBodyResponseErrors> responseErrorsList = new ArrayList<JsonApiBodyResponseErrors>();
+		responseErrorsList.add(responseError);
 
-            // Construir la respuesta
-            GetEnigmaStepResponse enigmaStepResponse = new GetEnigmaStepResponse();
-            enigmaStepResponse.setId(id);
-            enigmaStepResponse.setType(type);
-            enigmaStepResponse.setSolution(solution);
+		return responseErrorsList;
+	}
 
-            // Construir la respuesta JSON
-            JsonApiBodyResponseSuccess responseBody = new JsonApiBodyResponseSuccess();
-            responseBody.addDataItem(enigmaStepResponse);
-            responseList.add(responseBody);
-        }
+	private List<JsonApiBodyResponseSuccess> createResponseSuccess(JsonApiBodyRequest body) {
+		GetEnigmaStepResponse responseEnigma = new GetEnigmaStepResponse();
+		responseEnigma.setHeader(body.getData().get(0).getHeader());
+		responseEnigma.setStep(body.getData().get(0).getStep());
+		responseEnigma.setStepDescription("Servicio 1: Abrir el refrigerador");
 
-        return new ResponseEntity<>(responseList, HttpStatus.OK);
-    }
+		JsonApiBodyResponseSuccess responseSuccess = new JsonApiBodyResponseSuccess();
+		responseSuccess.addDataItem(responseEnigma);
 
-    // Método para resolver el enigma
-    private String solveEnigma(String enigmaQuestion) {
-        if (enigmaQuestion.equals("1")) {
-            return "Servicio 1: Abrir el refrigerador";
-        } else {
-            return "Paso no válido";
-        }
-    }
-    
-   
-    @GetMapping("/getStep")
-    public ResponseEntity<String> getStep() {
-        // Devolver el string deseado
-        String response = "Abrir el refrigerador";
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
-    
+		List<JsonApiBodyResponseSuccess> responseSuccessList = new ArrayList<JsonApiBodyResponseSuccess>();
+		responseSuccessList.add(responseSuccess);
+
+		return responseSuccessList;
+	}
 }
