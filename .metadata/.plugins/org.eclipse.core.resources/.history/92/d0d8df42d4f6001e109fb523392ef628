@@ -1,0 +1,6 @@
+package co.com.rodriguezCaicedo.microservice.Orquestador.service;
+
+@Service
+public class RestTemplateService {
+
+}

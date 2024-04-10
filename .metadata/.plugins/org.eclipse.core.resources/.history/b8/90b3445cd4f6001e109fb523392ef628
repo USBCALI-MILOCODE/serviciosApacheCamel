@@ -1,0 +1,5 @@
+package co.com.rodriguezCaicedo.microservice.Orquestador.strategy;
+
+public class JoinReplyAggregationStrategy implements AggregationStrategy {
+
+}

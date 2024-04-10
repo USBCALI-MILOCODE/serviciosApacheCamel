@@ -1,0 +1,5 @@
+package co.com.rodriguezCaicedo.microservice.Orquestador.model.client;
+
+public class ClientHeader {
+
+}

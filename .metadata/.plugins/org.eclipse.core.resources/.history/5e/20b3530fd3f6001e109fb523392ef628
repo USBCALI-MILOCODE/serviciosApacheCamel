@@ -1,0 +1,9 @@
+package co.com.rodriguezCaicedo.microservice.Orquestador.model.client;
+
+/**
+ * Header
+ */
+@Validated
+public class ClientHeader {
+
+}

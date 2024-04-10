@@ -1,0 +1,17 @@
+package co.com.rodriguezCaicedo.microservice.Orquestador.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class RestTemplateService {
+	private final RestTemplate restTemplate;
+
+	public RestTemplateService(RestTemplate restTemplate) {
+		this.restTemplate = new RestTemplate();
+
+	}
+
+	public ResponseEntity<String> getAll(String url) {
+		return restTemplate.getForEntity(url, String.class);
+	}
+}

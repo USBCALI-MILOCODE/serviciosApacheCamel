@@ -1,0 +1,6 @@
+package co.com.rodriguezCaicedo.microservice.Orquestador.model.client;
+
+@Validated
+public class ClientGetEnigmaStepResponse {
+
+}
