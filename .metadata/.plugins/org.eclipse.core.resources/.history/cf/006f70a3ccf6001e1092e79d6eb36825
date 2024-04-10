@@ -1,0 +1,5 @@
+package co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.model.client;
+
+public class ClientJsonApiBodyResponseSuccess {
+
+}

@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-03-12T17:47:40.265921400-05:00[America/Bogota]")
-@Api(value = "getStep", description = "the getStep API")
+@Api(value = "getSteps", description = "the getStep API")
 public interface GetStepApi {
 	@ApiOperation(value = "Get  answer enigma API", nickname = "getStepsPost", notes = "Get  answer enigma API", response = JsonApiBodyResponseSuccess.class, tags = {
 			"resolve-enigma-api-controller", })

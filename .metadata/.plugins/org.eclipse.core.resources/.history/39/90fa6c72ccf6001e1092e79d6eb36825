@@ -1,0 +1,11 @@
+package co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.model.client;
+
+import org.springframework.validation.annotation.Validated;
+
+/**
+ * GetEnigmaStepResponse
+ */
+@Validated
+public class ClientGetEnigmaStepResponse {
+
+}

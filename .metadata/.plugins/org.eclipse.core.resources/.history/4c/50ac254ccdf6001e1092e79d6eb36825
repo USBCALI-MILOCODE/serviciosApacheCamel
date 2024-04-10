@@ -1,0 +1,6 @@
+package co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.routes;
+
+@Component
+public class GetStepThreeClientRoute {
+
+}

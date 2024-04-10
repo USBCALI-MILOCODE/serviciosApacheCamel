@@ -9,13 +9,15 @@ import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.model.Header;
 import io.swagger.annotations.ApiModelProperty;
 
+/**
+ * GetEnigmaStepResponse
+ */
 @Validated
 public class ClientGetEnigmaStepResponse {
 	@JsonProperty("header")
-	private Header header = null;
+	private ClientHeader header = null;
 
 	@JsonProperty("step")
 	private String step = null;
@@ -23,7 +25,7 @@ public class ClientGetEnigmaStepResponse {
 	@JsonProperty("stepDescription")
 	private String stepDescription = null;
 
-	public ClientGetEnigmaStepResponse header(Header header) {
+	public ClientGetEnigmaStepResponse header(ClientHeader header) {
 		this.header = header;
 		return this;
 	}
@@ -35,12 +37,13 @@ public class ClientGetEnigmaStepResponse {
 	 **/
 	@ApiModelProperty(required = true, value = "")
 	@NotNull
+
 	@Valid
-	public Header getHeader() {
+	public ClientHeader getHeader() {
 		return header;
 	}
 
-	public void setHeader(Header header) {
+	public void setHeader(ClientHeader header) {
 		this.header = header;
 	}
 
@@ -111,7 +114,7 @@ public class ClientGetEnigmaStepResponse {
 
 		sb.append("class GetEnigmaStepResponse {\n");
 		sb.append("    header:          ").append(toIndentedString(header)).append("\n");
-		sb.append("    step:            ").append(toIndentedString(step)).append("\n");
+		sb.append("    step:            ").append(toIndentedString(stepDescription)).append("\n");
 		sb.append("    stepDescription: ").append(toIndentedString(stepDescription)).append("\n");
 		sb.append("}");
 
@@ -126,7 +129,6 @@ public class ClientGetEnigmaStepResponse {
 		if (o == null) {
 			return "null";
 		}
-
 		return o.toString().replace("\n", "\n    ");
 	}
 }

@@ -1,0 +1,9 @@
+package co.com.rodriguezCaicedo.microservice.resolveEnigmaApi4.model.client;
+
+/**
+ * GetEnigmaStepResponse
+ */
+@Validated
+public class ClientGetEnigmaStepResponse {
+
+}
